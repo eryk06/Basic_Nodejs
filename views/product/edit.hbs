@@ -1,0 +1,33 @@
+<form method="post" action="/cpanel/products/{{product._id}}/edit" enctype="multipart/form-data">
+  <div class="form-group">
+    <label>Name</label>
+    <input value="{{product.name}}" name="name" type="text" class="form-control" placeholder="Name">
+  </div>
+  <div class="form-group">
+    <label>Price</label>
+    <input value="{{product.price}}" name="price" type="number" class="form-control" placeholder="Price">
+  </div>
+  <div class="form-group">
+    <label>Quantity</label>
+    <input name="quantity" type="number" value="{{product.quantity}}" class="form-control" placeholder="Quantity">
+  </div>
+  <div class="form-group">
+    <div class="custom-file">
+      <input value="{{product.image}}" name="image" type="file" class="custom-file-input">
+      <label class="custom-file-label">Choose file</label>
+    </div>
+  </div>
+  <div>
+    <label>Category</label>
+    <select name="category" class="form-control">
+      {{#each categories}}
+      {{#if this.select}}
+      <option selected value="{{this._id}}">{{this.name}}</option>
+      {{else}}
+      <option value="{{this._id}}">{{this.name}}</option>
+      {{/if}}
+      {{/each}}
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
